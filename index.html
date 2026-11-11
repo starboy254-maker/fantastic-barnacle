@@ -1,0 +1,224 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scalping Dashboard – Forex & Gold</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+            padding: 24px;
+            line-height: 1.5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #f0f6fc;
+        }
+        .subtitle {
+            color: #8b949e;
+            margin-bottom: 28px;
+            font-size: 0.95rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .card {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        .card h2 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .card h2 .badge {
+            font-size: 0.7rem;
+            font-weight: 400;
+            background: #21262d;
+            color: #8b949e;
+            padding: 2px 8px;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+        }
+        .rule-list {
+            list-style: none;
+        }
+        .rule-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #21262d;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            gap: 12px;
+        }
+        .rule-list li:last-child {
+            border-bottom: none;
+        }
+        .rule-list .label {
+            color: #8b949e;
+        }
+        .rule-list .value {
+            font-weight: 600;
+            text-align: right;
+        }
+        .buy { color: #3fb950; }
+        .sell { color: #f85149; }
+        .neutral { color: #d29922; }
+        .info { color: #58a6ff; }
+        .score-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+        .score-table td {
+            padding: 6px 4px;
+            border-bottom: 1px solid #21262d;
+        }
+        .score-table td:first-child {
+            color: #8b949e;
+            width: 45%;
+        }
+        .score-table td:last-child {
+            font-weight: 600;
+            text-align: right;
+        }
+        .warning {
+            background: #1c1408;
+            border: 1px solid #9e6a03;
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            font-size: 0.9rem;
+            color: #d29922;
+        }
+        .warning strong {
+            color: #f0f6fc;
+        }
+        .footer {
+            text-align: center;
+            color: #484f58;
+            font-size: 0.8rem;
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #21262d;
+        }
+        .highlight {
+            background: #1f6feb22;
+            border-left: 3px solid #1f6feb;
+            padding: 8px 12px;
+            border-radius: 0 6px 6px 0;
+            font-size: 0.85rem;
+            color: #8b949e;
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>Scalping Dashboard</h1>
+    <p class="subtitle">Forex &amp; Gold · Visual checklist and rules · Not a live signal generator</p>
+
+    <div class="warning">
+        <strong>Read this first.</strong> This page is a reference card. It does <em>not</em> connect to your broker or TradingView. The indicators named below are TradingView Pine Script tools. You must add them to your TradingView chart to see live buy/sell signals. Never trade real money based only on a static HTML page.
+    </div>
+
+    <div class="grid">
+
+        <!-- GOLD PANEL -->
+        <div class="card">
+            <h2>Gold (XAU/USD) <span class="badge">5-Minute Scalping</span></h2>
+            <p style="font-size:0.85rem; color:#8b949e; margin-bottom:12px;">Tool: <strong style="color:#e6edf3;">Purra Buy Sell Signals</strong> on TradingView.</p>
+            <ul class="rule-list">
+                <li><span class="label">Green "Buy" label below candle</span><span class="value buy">Look for LONG</span></li>
+                <li><span class="label">Red "Sell" label above candle</span><span class="value sell">Look for SHORT</span></li>
+                <li><span class="label">Best session</span><span class="value info">London / Asian overlap</span></li>
+                <li><span class="label">Avoid</span><span class="value neutral">Major news + late NY</span></li>
+                <li><span class="label">Stop loss</span><span class="value">Just beyond recent swing</span></li>
+                <li><span class="label">Target</span><span class="value">1:1 to 1:2 risk-reward</span></li>
+            </ul>
+            <div class="highlight">Gold moves fast. Spread and slippage can eat a 5-minute scalp. Use a low-spread broker.</div>
+        </div>
+
+        <!-- COMPOSITE PANEL -->
+        <div class="card">
+            <h2>Forex Score <span class="badge">1m–15m Charts</span></h2>
+            <p style="font-size:0.85rem; color:#8b949e; margin-bottom:12px;">Tool: <strong style="color:#e6edf3;">Composite Leading Indicator v6</strong> on TradingView.</p>
+            <table class="score-table">
+                <tr><td>+8 or higher</td><td class="buy">BUY (high confidence)</td></tr>
+                <tr><td>+4 to +7</td><td class="buy">Weak buy</td></tr>
+                <tr><td>-3 to +3</td><td class="neutral">Skip / no edge</td></tr>
+                <tr><td>-4 to -7</td><td class="sell">Weak sell</td></tr>
+                <tr><td>-8 or lower</td><td class="sell">SELL (high confidence)</td></tr>
+            </table>
+            <div class="highlight">"EARLY BULL" / "EARLY BEAR" magenta triangles often appear 2–5 bars before price confirms.</div>
+        </div>
+
+        <!-- ABU ASAL PANEL -->
+        <div class="card">
+            <h2>Auto Levels <span class="badge">Forex &amp; Gold</span></h2>
+            <p style="font-size:0.85rem; color:#8b949e; margin-bottom:12px;">Tool: <strong style="color:#e6edf3;">Abu Asal Scalping Strategy Pro</strong> on TradingView.</p>
+            <ul class="rule-list">
+                <li><span class="label">Green lines on chart</span><span class="value buy">BUY setup</span></li>
+                <li><span class="label">Red lines on chart</span><span class="value sell">SELL setup</span></li>
+                <li><span class="label">Entry / TP / SL</span><span class="value info">Drawn automatically</span></li>
+                <li><span class="label">Trend filter</span><span class="value">200 EMA</span></li>
+            </ul>
+            <div class="highlight">Follow the lines. Do not move the stop loss wider after entry.</div>
+        </div>
+
+        <!-- ADRIAN THE BADDEST PANEL -->
+        <div class="card">
+            <h2>Adrian the Baddest <span class="badge">Currency Strength</span></h2>
+            <p style="font-size:0.85rem; color:#8b949e; margin-bottom:12px;">
+                <strong style="color:#f0f6fc;">Adrian the Baddest</strong> is our name for the currency strength meter.
+                On TradingView, search for the real tool: <strong style="color:#58a6ff;">Currency Strength Meter [ForexCracked]</strong>
+                or <strong style="color:#58a6ff;">Currency Strength Meter – Closed Bar</strong>.
+            </p>
+            <ul class="rule-list">
+                <li><span class="label">Long side</span><span class="value buy">Strongest currency</span></li>
+                <li><span class="label">Short side</span><span class="value sell">Weakest currency</span></li>
+                <li><span class="label">Best timeframe</span><span class="value info">5m / 15m</span></li>
+                <li><span class="label">Velocity trigger</span><span class="value">1.0+ point in one 5m bar</span></li>
+                <li><span class="label">Spread reading</span><span class="value neutral">Narrow = no trade</span></li>
+                <li><span class="label">Avoid</span><span class="value neutral">High-impact news (CPI etc.)</span></li>
+            </ul>
+            <div class="highlight">"Adrian the Baddest" tells you <em>which pair</em> to trade. It does not tell you <em>when</em> to enter. Use Purra or Composite for timing.</div>
+        </div>
+
+    </div>
+
+    <div class="footer">
+        Reference card only · No live data · Not financial advice · Test on demo first
+    </div>
+
+</div>
+</body>
+</html>
